@@ -1,0 +1,47 @@
+Admin/ManageProducts.php
+$delete_query = "DELETE FROM products WHERE product_id = '$product_id'";
+$products_query = "SELECT * FROM products ORDER BY product_id DESC";
+
+Admin/ManageOrders.php
+$delete_query = "DELETE FROM orders WHERE order_id = '$order_id'";
+$orders_query = "SELECT * FROM orders ORDER BY order_id DESC";
+
+Admin/AdminDashboard.php
+$farmers_query = "SELECT COUNT(*) as total_farmers FROM farmerregistration";
+$buyers_query = "SELECT COUNT(*) as total_buyers FROM buyerregistration";
+$products_query = "SELECT COUNT(*) as total_products FROM products";
+$orders_query = "SELECT COUNT(*) as total_orders FROM orders";
+$total_revenue_query = "SELECT SUM(total) as total_revenue FROM orders";
+$recent_orders_query = "SELECT * FROM orders ORDER BY order_id DESC LIMIT 10";
+
+Admin/ViewProduct.php
+$query = "SELECT * FROM products WHERE product_id = $product_id LIMIT 1";
+
+Admin/ViewOrder.php
+$query = "SELECT * FROM orders WHERE order_id = $order_id LIMIT 1";
+
+Admin/ViewBuyer.php
+$query = "SELECT * FROM buyerregistration WHERE buyer_id = $buyer_id LIMIT 1";
+
+Admin/ViewFarmer.php
+$query = "SELECT * FROM farmerregistration WHERE farmer_id = $farmer_id LIMIT 1";
+
+Admin/ManageBuyers.php
+$delete_query = "DELETE FROM buyerregistration WHERE buyer_id = '$buyer_id'";
+$buyers_query = "SELECT * FROM buyerregistration ORDER BY buyer_id DESC";
+
+Admin/ManageFarmers.php
+$delete_query = "DELETE FROM farmerregistration WHERE farmer_id = '$farmer_id'";
+$farmers_query = "SELECT * FROM farmerregistration ORDER BY farmer_id DESC";
+
+Admin/insert_product.php
+$get_cats = "select * from categories";
+$getting_id = "select * from farmerregistration where farmer_phone = $phone";
+$insert_product = "insert into products (farmer_fk,product_cat,product_title,product_type,product_stock,product_price,
+                            product_desc,product_image,product_keywords,product_delivery) 
+                            values ('$id','$product_cat','$product_title','$product_type','$product_stock','$product_price'
+                                    ,'$product_desc','$product_image','$product_keywords','$product_delivery')";
+
+Admin/AdminSettings.php
+$verify_query = "SELECT * FROM admin WHERE admin_id = '" . $_SESSION['admin_id'] . "' AND admin_password = '$old_encrypted'";
+$update_query = "UPDATE admin SET admin_password = '$new_encrypted' WHERE admin_id = '" . $_SESSION['admin_id'] . "'";
